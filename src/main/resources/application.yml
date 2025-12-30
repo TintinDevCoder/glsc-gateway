@@ -22,8 +22,15 @@ spring:
             - Path=/api/product/**
           filters:
             - RewritePath=/api/(?<segment>.*), /$\{segment}
+        ##用户api
+        - id: member_route
+          uri: lb://glsc-member
+          predicates:
+            - Path=/api/member/**
+          filters:
+            - RewritePath=/api/(?<segment>.*), /$\{segment}
         ##第三方服务api
-        - id: product_route
+        - id: third_party_route
           uri: lb://glsc-third-party
           predicates:
             - Path=/api/thirdparty/**
