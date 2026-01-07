@@ -29,6 +29,20 @@ spring:
             - Path=/api/member/**
           filters:
             - RewritePath=/api/(?<segment>.*), /$\{segment}
+        ##优惠api
+        - id: coupon_route
+          uri: lb://glsc-coupon
+          predicates:
+            - Path=/api/coupon/**
+          filters:
+            - RewritePath=/api/(?<segment>.*), /$\{segment}
+        ##库存api
+        - id: ware_route
+          uri: lb://glsc-ware
+          predicates:
+            - Path=/api/ware/**
+          filters:
+            - RewritePath=/api/(?<segment>.*), /$\{segment}
         ##第三方服务api
         - id: third_party_route
           uri: lb://glsc-third-party
