@@ -57,3 +57,8 @@ spring:
             - Path=/api/**
           filters:
             - RewritePath=/api/(?<segment>.*), /renren-fast/$\{segment}
+        ##商城主页
+        - id: glsc_host_route
+          uri: lb://glsc-product
+          predicates:
+            - Host=**.glsc.com, glsc.com, 192.168.189.130
